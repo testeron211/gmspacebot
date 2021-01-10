@@ -9,6 +9,8 @@ import (
 var (
 	Ver = "0.12"
 
+	RateErr = "Нельзя использовать бота так часто!"
+
 	author = &discordgo.MessageEmbedAuthor{
 		IconURL: "https://troit5ky.space/bot/assets/img/bot.gif",
 		URL:     "https://troit5ky.space",

@@ -10,6 +10,10 @@ import (
 func Init(router *dgc.Router) {
 	log.Printf("Initialize commands...")
 
+	rate := dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
+		ctx.RespondText(RateErr)
+	})
+
 	defer log.Printf("Commands initialized!")
 
 	router.RegisterCmd(&dgc.Command{
@@ -18,10 +22,8 @@ func Init(router *dgc.Router) {
 		Usage:       "ping",
 		Example:     "ping",
 		IgnoreCase:  true,
-		RateLimiter: dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
-			ctx.RespondText("Нельзя использовать бота так часто!")
-		}),
-		Handler: Ping,
+		RateLimiter: rate,
+		Handler:     Ping,
 	})
 
 	router.RegisterCmd(&dgc.Command{
@@ -30,10 +32,8 @@ func Init(router *dgc.Router) {
 		Usage:       "echo [a]...",
 		Example:     "echo Hello World!",
 		IgnoreCase:  true,
-		RateLimiter: dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
-			ctx.RespondText("Нельзя использовать бота так часто!")
-		}),
-		Handler: Echo,
+		RateLimiter: rate,
+		Handler:     Echo,
 	})
 
 	router.RegisterCmd(&dgc.Command{
@@ -42,9 +42,7 @@ func Init(router *dgc.Router) {
 		Usage:       "status",
 		Example:     "status",
 		IgnoreCase:  true,
-		RateLimiter: dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
-			ctx.RespondText("Нельзя использовать бота так часто!")
-		}),
-		Handler: Status,
+		RateLimiter: rate,
+		Handler:     Status,
 	})
 }

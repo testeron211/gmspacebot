@@ -2,5 +2,7 @@
   "token": "null",
   "prefix": ".",
   "ip": "192.168.0.1:27015",
-  "status": "null"
+  "status": "null",
+  "statuschannel":true,
+  "statuschannelid":"null"
  }

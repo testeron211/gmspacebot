@@ -1,0 +1,5 @@
+package Bot
+
+func StatusMsgUpd() {
+
+}

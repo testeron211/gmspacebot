@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	commands "../../commands"
 	config "../Config"
@@ -28,13 +29,22 @@ func Init() {
 		Prefixes: []string{config.Option.Prefix},
 	})
 
-	Router.RegisterDefaultHelpCommand(Session, nil)
+	rate := dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
+		ctx.RespondText("Нельзя использовать бота так часто!")
+	})
+
+	Router.RegisterDefaultHelpCommand(Session, rate)
 
 	Router.Initialize(Session)
 
 	commands.Init(Router)
 
 	Session.AddHandler(playing)
+
+	if config.Option.StatusCh == true {
+
+	}
+
 	err = Session.Open()
 	if err != nil {
 		log.Fatal(err)

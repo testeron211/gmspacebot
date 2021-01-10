@@ -9,19 +9,23 @@ import (
 
 type (
 	OptionStruct struct {
-		Token  string `json:"token"`
-		Prefix string `json:"prefix"`
-		IP     string `json:"ip"`
-		Status string `json:"status"`
+		Token      string `json:"token"`
+		Prefix     string `json:"prefix"`
+		IP         string `json:"ip"`
+		Status     string `json:"status"`
+		StatusCh   bool   `json:"statuschannel"`
+		StatusChID string `json:"statuschannelid"`
 	}
 )
 
 var (
 	Option_Example = OptionStruct{
-		Token:  "null",
-		Prefix: ".",
-		IP:     "192.168.0.1:27015",
-		Status: "null",
+		Token:      "null",
+		Prefix:     ".",
+		IP:         "192.168.0.1:27015",
+		Status:     "null",
+		StatusCh:   true,
+		StatusChID: "null",
 	}
 
 	Option *OptionStruct
