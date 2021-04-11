@@ -7,22 +7,21 @@ import (
 )
 
 var (
-	Ver = "0.12"
-
-	RateErr = "Нельзя использовать бота так часто!"
-
 	author = &discordgo.MessageEmbedAuthor{
-		IconURL: "https://troit5ky.space/bot/assets/img/bot.gif",
-		URL:     "https://troit5ky.space",
+		URL:     "https://gm.troit5ky.ru",
 		Name:    "GM.space",
+		IconURL: "https://troit5ky.ru/assets/img/avatar.png",
 	}
+
 	footer = &discordgo.MessageEmbedFooter{
-		Text: Ver,
+		Text:         "",
+		IconURL:      "",
+		ProxyIconURL: "",
 	}
+
 	embed = &discordgo.MessageEmbed{
 		Author:    author,
 		Timestamp: time.Now().Format(time.RFC3339),
-		Footer:    footer,
 		Color:     4868863,
 	}
 )

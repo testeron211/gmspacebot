@@ -2,17 +2,12 @@ package commands
 
 import (
 	"log"
-	"time"
 
-	"github.com/lus/dgc"
+	"github.com/Lukaesebrot/dgc"
 )
 
 func Init(router *dgc.Router) {
 	log.Printf("Initialize commands...")
-
-	rate := dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
-		ctx.RespondText(RateErr)
-	})
 
 	defer log.Printf("Commands initialized!")
 
@@ -22,7 +17,6 @@ func Init(router *dgc.Router) {
 		Usage:       "ping",
 		Example:     "ping",
 		IgnoreCase:  true,
-		RateLimiter: rate,
 		Handler:     Ping,
 	})
 
@@ -32,7 +26,6 @@ func Init(router *dgc.Router) {
 		Usage:       "echo [a]...",
 		Example:     "echo Hello World!",
 		IgnoreCase:  true,
-		RateLimiter: rate,
 		Handler:     Echo,
 	})
 
@@ -42,7 +35,15 @@ func Init(router *dgc.Router) {
 		Usage:       "status",
 		Example:     "status",
 		IgnoreCase:  true,
-		RateLimiter: rate,
 		Handler:     Status,
+	})
+
+	router.RegisterCmd(&dgc.Command{
+		Name:        "players",
+		Description: "Вернёт игроков на сервере.",
+		Usage:       "players",
+		Example:     "players",
+		IgnoreCase:  true,
+		Handler:     Players,
 	})
 }

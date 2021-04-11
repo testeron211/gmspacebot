@@ -4,8 +4,9 @@ import (
 	"log"
 	"strconv"
 
-	config "../lib/Config"
-	"github.com/lus/dgc"
+	"gmspacebot/lib/config"
+
+	"github.com/Lukaesebrot/dgc"
 	"github.com/rumblefrog/go-a2s"
 )
 

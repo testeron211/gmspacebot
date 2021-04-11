@@ -1,10 +1,11 @@
-package Bot
+package bot
 
 import (
-	config "../Config"
+	"gmspacebot/lib/config"
+
 	"github.com/bwmarrin/discordgo"
 )
 
 func playing(s *discordgo.Session, event *discordgo.Ready) {
-	s.UpdateStatus(0, config.Option.Status)
+	s.UpdateGameStatus(0, config.Option.Status)
 }

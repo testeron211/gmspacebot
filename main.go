@@ -3,14 +3,14 @@ package main
 import (
 	"log"
 
-	"./lib/Bot"
-	"./lib/Config"
+	"gmspacebot/lib/bot"
+	"gmspacebot/lib/config"
 )
 
 func main() {
 	log.Println("Init bot config...")
-	log.Println(Config.Init())
+	config.Init()
 
 	log.Println("Init Bot...")
-	Bot.Init()
+	bot.Init()
 }

@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/lus/dgc"
+	"github.com/Lukaesebrot/dgc"
 )
 
 func Echo(ctx *dgc.Ctx) {

@@ -1,4 +1,4 @@
-package Bot
+package bot
 
 func StatusMsgUpd() {
 

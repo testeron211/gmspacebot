@@ -1,17 +1,16 @@
-package Bot
+package bot
 
 import (
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
-	commands "../../commands"
-	config "../Config"
+	"gmspacebot/commands"
+	"gmspacebot/lib/config"
 
+	"github.com/Lukaesebrot/dgc"
 	"github.com/bwmarrin/discordgo"
-	"github.com/lus/dgc"
 )
 
 var (
@@ -29,11 +28,7 @@ func Init() {
 		Prefixes: []string{config.Option.Prefix},
 	})
 
-	rate := dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
-		ctx.RespondText("Нельзя использовать бота так часто!")
-	})
-
-	Router.RegisterDefaultHelpCommand(Session, rate)
+	Router.RegisterDefaultHelpCommand(Session, nil)
 
 	Router.Initialize(Session)
 

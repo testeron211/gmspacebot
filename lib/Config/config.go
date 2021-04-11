@@ -1,4 +1,4 @@
-package Config
+package config
 
 import (
 	"encoding/json"
@@ -31,12 +31,12 @@ var (
 	Option *OptionStruct
 )
 
-func Init() string {
+func Init() {
 	a, err := ioutil.ReadFile("config/bot.json")
 
 	if err != nil {
 		CreateExample()
-		return "Change config/bot.json"
+		os.Exit(0)
 	}
 
 	err = json.Unmarshal(a, &Option)
@@ -44,8 +44,6 @@ func Init() string {
 	if err != nil {
 		log.Panic(err)
 	}
-
-	return "Succes!"
 }
 
 func CreateExample() {
