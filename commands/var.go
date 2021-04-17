@@ -1,8 +1,6 @@
 package commands
 
 import (
-	"time"
-
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -14,13 +12,10 @@ var (
 	}
 
 	footer = &discordgo.MessageEmbedFooter{
-		Text:         "",
-		IconURL:      "",
-		ProxyIconURL: "",
+		Text: "made by troit5ky.ru",
 	}
 
 	embed = &discordgo.MessageEmbed{
-		Author:    author,
-		Timestamp: time.Now().Format(time.RFC3339),
+		Author: author,
 	}
 )
