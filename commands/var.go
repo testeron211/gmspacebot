@@ -22,6 +22,5 @@ var (
 	embed = &discordgo.MessageEmbed{
 		Author:    author,
 		Timestamp: time.Now().Format(time.RFC3339),
-		Color:     4868863,
 	}
 )

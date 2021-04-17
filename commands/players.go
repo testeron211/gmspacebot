@@ -45,9 +45,9 @@ func Players(ctx *dgc.Ctx) {
 		s := strconv.Itoa(plytimeraw % 60)
 		m := strconv.Itoa(plytimeraw / 60 % 60)
 		h := strconv.Itoa(plytimeraw / 3600 % 24)
-		result = result + strconv.Itoa(i+1) + ". [" + h + "h " + m + "m " + s + "s" + "] " + player.Name + " | Счёт: " + strconv.Itoa(int(player.Score)) + "\n"
+		result = result + strconv.Itoa(i+1) + ". [" + h + ":" + m + ":" + s + "] " + player.Name + "\n"
 	}
 
-	embed.Description = result
+	embed.Description = "```\n" + result + "\n```"
 	ctx.RespondEmbed(embed)
 }
