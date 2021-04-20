@@ -37,7 +37,10 @@ func Init() {
 	Session.AddHandler(playing)
 
 	if config.Option.StatusCh == true {
-
+		/*
+			Постоянное сообщение со статусом
+			Представьте, что оно есть :shrug:
+		*/
 	}
 
 	err = Session.Open()

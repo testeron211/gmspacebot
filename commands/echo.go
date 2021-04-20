@@ -9,12 +9,9 @@ func Echo(ctx *dgc.Ctx) {
 	embed.Title = "Echo"
 
 	if ctx.Arguments.Amount() < 1 {
-		embed.Description = "Введи аргументы!"
-		embed.Color = 16730698
-		ctx.RespondEmbed(embed)
+		notEnoughArgs(ctx)
 	} else {
 		embed.Description = "```\n" + ctx.Arguments.Raw() + "\n```"
 		ctx.RespondEmbed(embed)
 	}
-
 }

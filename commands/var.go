@@ -11,10 +11,6 @@ var (
 		IconURL: "https://troit5ky.ru/assets/img/avatar.png",
 	}
 
-	footer = &discordgo.MessageEmbedFooter{
-		Text: "made by troit5ky.ru",
-	}
-
 	embed = &discordgo.MessageEmbed{
 		Author: author,
 	}

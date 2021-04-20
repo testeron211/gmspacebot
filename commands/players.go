@@ -2,7 +2,6 @@ package commands
 
 import (
 	"gmspacebot/lib/config"
-	"log"
 	"strconv"
 
 	"github.com/Lukaesebrot/dgc"
@@ -15,22 +14,18 @@ func Players(ctx *dgc.Ctx) {
 
 	client, err := a2s.NewClient(config.Option.IP)
 	if err != nil {
-		log.Println(err)
-		embed.Color = 16730698
-		embed.Description = "Сервер недоступен"
-		ctx.RespondEmbed(embed)
-		return
+		connectionTimeOut(ctx, err)
 	}
 
 	defer client.Close()
 
 	info, err := client.QueryPlayer()
 	if err != nil {
-		log.Println(err)
-		embed.Color = 16730698
-		embed.Description = "Сервер недоступен"
-		ctx.RespondEmbed(embed)
-		return
+		connectionTimeOut(ctx, err)
+	}
+
+	if (int(info.Count)) == 0 {
+		notEnoughPlayers(ctx)
 	}
 
 	var result string
